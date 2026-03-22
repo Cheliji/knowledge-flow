@@ -32,7 +32,7 @@ public class ChatMessage {
         /**
          * 助手机器人角色，表示大模型返回的回复内容
          */
-        ASSISTANT
+        ASSISTANT ;
 
         /**
          * 根据字符串值匹配对应的角色枚举
