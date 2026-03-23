@@ -1,7 +1,5 @@
 package com.cheliji.ai.knowledgeflow.infra.config;
 
-
-import ch.qos.logback.core.model.ModelConstants;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -74,7 +72,7 @@ public class AIModelProperties {
         /**
          * 候选模型列表
          */
-        List<ModelConstants> constants = new ArrayList<>();
+        List<ModelCandidate> constants = new ArrayList<>();
 
     }
 
