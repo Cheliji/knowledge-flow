@@ -13,6 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@TableName("t_knowledge_base")
 public class KnowledgeBaseDO {
 
     /**
@@ -39,12 +40,12 @@ public class KnowledgeBaseDO {
     /**
      * 创建人
      */
-    private String createBy ;
+    private String createdBy ;
 
     /**
      * 修改人
      */
-    private String updateBy ;
+    private String updatedBy ;
 
 
     @TableField(fill = FieldFill.INSERT)

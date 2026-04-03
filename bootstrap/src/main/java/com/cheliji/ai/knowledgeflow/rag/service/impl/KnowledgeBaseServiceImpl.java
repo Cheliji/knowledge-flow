@@ -52,8 +52,8 @@ public class KnowledgeBaseServiceImpl implements KnowledgeBaseService {
                 .embeddingModel(requestParam.getEmbeddingModel())
                 .createTime(new Date())
                 .updateTime(new Date())
-                .createBy(UserContext.getUserId())
-                .updateBy(UserContext.getUserId())
+                .createdBy(UserContext.getUserId())
+                .updatedBy(UserContext.getUserId())
                 .deleted(0)
                 .build();
 
@@ -109,7 +109,7 @@ public class KnowledgeBaseServiceImpl implements KnowledgeBaseService {
 
         // TODO 理论上应该判断是否需要修改嵌入模型，再判断是否知识库是否以及分块了，如果分了就不能修改
         knowledgeBaseDO.setName(name) ;
-        knowledgeBaseDO.setUpdateBy(UserContext.getUserId());
+        knowledgeBaseDO.setUpdatedBy(UserContext.getUserId());
 
         knowledgeBaseMapper.updateById(knowledgeBaseDO);
 
