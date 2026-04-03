@@ -1,4 +1,4 @@
-package com.cheliji.ai.knowledgeflow.rag.service;
+package com.cheliji.ai.knowledgeflow.knowledge.service;
 
 import com.cheliji.ai.knowledgeflow.knowledge.controller.request.KnowledgeBaseCreateRequest;
 import com.cheliji.ai.knowledgeflow.knowledge.controller.request.KnowledgeBaseUpdateRequest;

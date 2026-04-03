@@ -1,15 +1,16 @@
-package com.cheliji.ai.knowledgeflow.rag.service.impl;
+package com.cheliji.ai.knowledgeflow.knowledge.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.cheliji.ai.knowledgeflow.framework.context.UserContext;
 import com.cheliji.ai.knowledgeflow.framework.exception.ClientException;
 import com.cheliji.ai.knowledgeflow.framework.exception.ServiceException;
 import com.cheliji.ai.knowledgeflow.knowledge.controller.request.KnowledgeBaseCreateRequest;
 import com.cheliji.ai.knowledgeflow.knowledge.controller.request.KnowledgeBaseUpdateRequest;
 import com.cheliji.ai.knowledgeflow.knowledge.dao.entity.KnowledgeBaseDO;
+import com.cheliji.ai.knowledgeflow.knowledge.dao.entity.KnowledgeChunkDO;
 import com.cheliji.ai.knowledgeflow.knowledge.dao.mapper.KnowledgeBaseMapper;
-import com.cheliji.ai.knowledgeflow.rag.service.KnowledgeBaseService;
+import com.cheliji.ai.knowledgeflow.knowledge.dao.mapper.KnowledgeChunkMapper;
+import com.cheliji.ai.knowledgeflow.knowledge.service.KnowledgeBaseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,7 @@ import java.util.Date;
 public class KnowledgeBaseServiceImpl implements KnowledgeBaseService {
 
     private final KnowledgeBaseMapper knowledgeBaseMapper;
+    private final KnowledgeChunkMapper knowledgeChunkMapper;
     private final S3Client s3Client;
 
 
@@ -108,6 +110,21 @@ public class KnowledgeBaseServiceImpl implements KnowledgeBaseService {
 
 
         // TODO 理论上应该判断是否需要修改嵌入模型，再判断是否知识库是否以及分块了，如果分了就不能修改
+
+        if (requestParam.getEmbeddingModel() != null && requestParam.getEmbeddingModel().length() > 0) {
+            Long chunkCount = knowledgeChunkMapper.selectCount(
+                    new LambdaQueryWrapper<KnowledgeChunkDO>()
+                            .eq(KnowledgeChunkDO::getKbId, knowledgeBaseDO.getId())
+                            .eq(KnowledgeChunkDO::getEnable, 1)
+                            .eq(KnowledgeChunkDO::getDeleted, 0)
+            );
+
+            if (chunkCount > 0) {
+                throw new ClientException("知识库已有文档进行了向量化，不能再改变向量化模型") ;
+            }
+            knowledgeBaseDO.setEmbeddingModel(requestParam.getEmbeddingModel());
+        }
+
         knowledgeBaseDO.setName(name) ;
         knowledgeBaseDO.setUpdatedBy(UserContext.getUserId());
 

@@ -5,7 +5,7 @@ import com.cheliji.ai.knowledgeflow.framework.convention.Result;
 import com.cheliji.ai.knowledgeflow.framework.web.Results;
 import com.cheliji.ai.knowledgeflow.knowledge.controller.request.KnowledgeBaseCreateRequest;
 import com.cheliji.ai.knowledgeflow.knowledge.controller.request.KnowledgeBaseUpdateRequest;
-import com.cheliji.ai.knowledgeflow.rag.service.KnowledgeBaseService;
+import com.cheliji.ai.knowledgeflow.knowledge.service.KnowledgeBaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

@@ -2,11 +2,9 @@ package com.cheliji.ai.knowledgeflow.knowledge;
 
 import com.cheliji.ai.knowledgeflow.framework.context.LoginUser;
 import com.cheliji.ai.knowledgeflow.framework.context.UserContext;
-import com.cheliji.ai.knowledgeflow.framework.convention.Result;
-import com.cheliji.ai.knowledgeflow.knowledge.controller.KnowledgeBaseController;
 import com.cheliji.ai.knowledgeflow.knowledge.controller.request.KnowledgeBaseCreateRequest;
 import com.cheliji.ai.knowledgeflow.knowledge.controller.request.KnowledgeBaseUpdateRequest;
-import com.cheliji.ai.knowledgeflow.rag.service.KnowledgeBaseService;
+import com.cheliji.ai.knowledgeflow.knowledge.service.KnowledgeBaseService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
