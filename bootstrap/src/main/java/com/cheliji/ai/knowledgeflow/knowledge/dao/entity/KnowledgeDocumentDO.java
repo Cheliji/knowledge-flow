@@ -30,7 +30,7 @@ public class KnowledgeDocumentDO {
     /**
      * 文档名称
      */
-    private String doc_name ;
+    private String docName ;
 
     /**
      * 是否启用  1：启用  0：禁用
@@ -79,6 +79,7 @@ public class KnowledgeDocumentDO {
 
     /**
      * 定时更新是否起用，用于定时更新共享文件（URL 文件）
+     * 1：启用，0：禁用
      */
     private Integer scheduleEnabled ;
 
