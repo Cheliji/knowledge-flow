@@ -109,7 +109,7 @@ public class KnowledgeBaseServiceImpl implements KnowledgeBaseService {
         }
 
 
-        // TODO 理论上应该判断是否需要修改嵌入模型，再判断是否知识库是否以及分块了，如果分了就不能修改
+        //判断是否需要修改嵌入模型，再判断是否知识库是否以及分块了，如果分了就不能修改
 
         if (requestParam.getEmbeddingModel() != null && requestParam.getEmbeddingModel().length() > 0) {
             Long chunkCount = knowledgeChunkMapper.selectCount(

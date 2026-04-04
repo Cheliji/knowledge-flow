@@ -11,7 +11,6 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * 首保等待器 - 用于等待第一个数据包到达的同步工具
  */
-// TODO 个人认为这是一个冗余设计
 public class FirstPacketAwaiter {
 
     private final CountDownLatch latch = new CountDownLatch(1);
