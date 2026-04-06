@@ -26,4 +26,14 @@ public class KnowledgeDocumentController {
         return Results.success(knowledgeDocumentService.upload(kbId,file,requestParam)) ;
     }
 
+    /**
+     * 分块操作
+     */
+    @PostMapping("/knowledge-base/docs/{doc-id}/chunk")
+    public Result<Void> startChunk(@PathVariable("doc-id") String docId) {
+
+        knowledgeDocumentService.startChunk(docId) ;
+        return Results.success() ;
+    }
+
 }

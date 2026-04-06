@@ -5,6 +5,7 @@ import com.cheliji.ai.knowledgeflow.framework.exception.ServiceException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tika.Tika;
 import org.apache.tika.parser.pdf.PDFParserConfig;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayInputStream;
@@ -16,6 +17,7 @@ import java.util.Map;
  */
 @Slf4j
 @Component
+@Primary
 public class TikaDocumentParser implements DocumentParser{
 
     private static final Tika TIKA = new Tika();
